@@ -1,0 +1,11 @@
+.app-content {
+  width : 600px;
+  margin: 10px;
+  margin-left: 280px;
+  padding : 1px;
+}
+
+.text-content {
+  font-size: 1.8em;
+  padding-left: 200px;
+}
