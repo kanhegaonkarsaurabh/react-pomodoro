@@ -5,7 +5,15 @@
   padding : 1px;
 }
 
+.control-row {
+  margin-bottom: 8px ;
+}
+
 .text-content {
   font-size: 1.8em;
   padding-left: 200px;
+}
+
+h2,h3 {
+  margin: 20px;
 }
