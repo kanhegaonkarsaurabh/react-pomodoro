@@ -4,6 +4,7 @@ import TimerHeader from '../../TimerHeader/components/timerheader';
 import TimerDisplay from '../../TimerDisplay/components/timerdisplay';
 import TimerButton from '../../TimerButton';
 import TimerConfig from '../../TimerConfig/components/timerconfig';
+import * as timerStates from '../../timerStates';
 class Timer extends Component {
   constructor() {
     super();
@@ -11,10 +12,11 @@ class Timer extends Component {
     this.state = {
       currentTime : moment.duration(25,'minutes'),
       baseTime : moment.duration(25,'minutes'),
-
+      timerState : timerStates.NOT_SET,
     };
 
     this.setBaseTime = this.setBaseTime.bind(this);
+    this.startTimer = this.startTimer.bind(this);
   }
 
   setBaseTime(newBaseTime) {
@@ -24,16 +26,26 @@ class Timer extends Component {
     });
   }
 
+  startTimer() {
+    this.setState({
+      timerState : timerStates.RUNNING,
+    });
+  }
+
   render() {
      return (
       <div className="container-fluid">
         <TimerHeader />
         <TimerDisplay currentTime={this.state.currentTime} />
-        <TimerButton />
-        <TimerConfig
-        baseTime = {this.state.baseTime}
-        setBaseTime = {this.setBaseTime}
-        />
+        <TimerButton startTimer = {this.startTimer}/>
+        {
+          (this.state.timerState !== timerStates.RUNNING)
+            &&
+            (<TimerConfig
+              baseTime = {this.state.baseTime}
+              setBaseTime = {this.setBaseTime}
+            />)
+        }
       </div>
      );
   }
