@@ -17,6 +17,7 @@ class Timer extends Component {
     };
 
     this.setBaseTime = this.setBaseTime.bind(this);
+    this.splitTimer = this.splitTimer.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
     this.reduceTimer = this.reduceTimer.bind(this);
@@ -61,6 +62,11 @@ class Timer extends Component {
     });
   }
 
+  splitTimer() {
+    console.log(this.state.currentTime.get('seconds'));
+
+  }
+
   completeTimer() {
     if (this.state.timer) {
       clearInterval(this.state.timer);
@@ -83,7 +89,8 @@ class Timer extends Component {
           stopTimer = {this.stopTimer}
           timerState = {this.state.timerState}
         startTimer = {this.startTimer}
-
+        splitTimer = {this.splitTimer}
+        currentTime = {this.state.currentTime}
 
         />
         {
@@ -94,6 +101,7 @@ class Timer extends Component {
               setBaseTime = {this.setBaseTime}
             />)
         }
+
       </div>
      );
   }
