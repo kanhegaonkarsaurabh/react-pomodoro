@@ -43,8 +43,15 @@ class TimerButton extends Component {
         { this.state.splitTime[this.state.counter] }
       </div>
     );
-    if (this.props.timerState === timerStates.COMPLETE) return (<button className="btn btn-info center-block" onClick = {this.props.stopTimer}>Reset</button>);
+    if (this.props.timerState === timerStates.COMPLETE) return (
+      <div  >
+        <button className="btn btn-info center-block" onClick = {this.props.stopTimer}>Reset</button>
+        <h3 className = "text-secondary">
+        Split Times : </h3>
 
+        { this.state.splitTime }
+
+      </div> );
 }
 
   render() {
